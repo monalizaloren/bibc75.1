@@ -17,25 +17,7 @@ const appIcon = require("../assets/appIcon.png");
 const appName = require("../assets/appName.png");
 
 export default class LoginScreen extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      email: "",
-      password: ""
-    };
-  }
 
-  handleLogin = (email, password) => {
-    firebase
-      .auth()
-      .signInWithEmailAndPassword(email, password)
-      .then(() => {
-        this.props.navigation.navigate("BottomTab");
-      })
-      .catch(error => {
-        Alert.alert(error.message);
-      });
-  };
 
   render() {
     const { email, password } = this.state;
@@ -47,25 +29,8 @@ export default class LoginScreen extends Component {
             <Image source={appName} style={styles.appName} />
           </View>
           <View style={styles.lowerContainer}>
-            <TextInput
-              style={styles.textinput}
-              onChangeText={text => this.setState({ email: text })}
-              placeholder={"Insira seu Email"}
-              placeholderTextColor={"#FFFFFF"}
-              autoFocus
-            />
-            <TextInput
-              style={[styles.textinput, { marginTop: 20 }]}
-              onChangeText={text => this.setState({ password: text })}
-              placeholder={"Insira sua Senha"}
-              placeholderTextColor={"#FFFFFF"}
-              secureTextEntry
-            />
-            <TouchableOpacity
-              style={[styles.button, { marginTop: 20 }]}
-              onPress={() => this.handleLogin(email, password)}
-            >
-              <Text style={styles.buttonText}>Entrar</Text>
+            
+           
             </TouchableOpacity>
           </View>
         </ImageBackground>
